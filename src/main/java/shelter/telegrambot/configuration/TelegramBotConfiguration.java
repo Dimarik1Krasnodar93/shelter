@@ -2,6 +2,9 @@ package shelter.telegrambot.configuration;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.DeleteMyCommands;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,4 +19,11 @@ public class TelegramBotConfiguration {
         bot.execute(new DeleteMyCommands());
         return bot;
     }
+
+    @Bean(destroyMethod = "close")
+    public SessionFactory sessionFactory() {
+        var registry = new StandardServiceRegistryBuilder().configure().build();
+        return new MetadataSources(registry).buildMetadata().buildSessionFactory();
+    }
+
 }
