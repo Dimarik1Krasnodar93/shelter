@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;//1
+    private int id;//2
     @Column
     private String name;
     @Column
