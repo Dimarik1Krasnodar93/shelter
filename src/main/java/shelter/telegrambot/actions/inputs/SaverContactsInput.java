@@ -9,7 +9,7 @@ import shelter.telegrambot.repository.HibernateClientRepository;
 import shelter.telegrambot.model.Client;
 
 @Component
-public class SaverContactsInput implements Input {
+public class  SaverContactsInput<T> implements Input {
 
     @Autowired
     private HibernateClientRepository hibernateClientRepository;
@@ -17,7 +17,7 @@ public class SaverContactsInput implements Input {
     private TelegramBot telegramBot;
 
     @Override
-    public void save(Update update, String message) {
+    public T execute(Update update, String message) {
         String[] array = message.split(" ");
         if (array.length < 2) {
             throw new IllegalArgumentException("Incorrect name or phone. "
@@ -26,6 +26,7 @@ public class SaverContactsInput implements Input {
         Client client = new Client(0, array[0], array[1]);
         hibernateClientRepository.save(client);
         TelegramBotUpdatesListener.sendMessage(telegramBot, update.message().chat().id(),
-                "You need give us you passport and bank account details");
+                "Done!");
+        return null;
     }
 }

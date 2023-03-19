@@ -13,6 +13,8 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <mapping class="shelter.telegrambot.model.Client" />
+        <mapping class="shelter.telegrambot.model.Pet" />
+        <mapping class="shelter.telegrambot.model.TypePet" />
 
     </session-factory>
 </hibernate-configuration>

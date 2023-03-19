@@ -21,7 +21,9 @@ public class Welcome implements Action {
     public void execute(long chatId) {
         TelegramBotUpdatesListener.sendMessage(telegramBot, chatId,
                 "Welcome! I'm chat-bot. Choose the link :\n" +
+                        "/Start - main menu\n" +
                         "/ShelterInfo - information about shelter\n" +
+                        "/GetPetInfo - information about shelter\n" +
                         "/TimeTable - get timetable, address and driving directions\n" +
                         "/SecurityRecommendations - give security recommendations\n" +
                         "/SaveContactInfo - write contacts and we'll recall you\n" +

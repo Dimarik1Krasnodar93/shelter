@@ -13,4 +13,5 @@
     <include file="scripts/003_insert_type_pets.sql" relativeToChangelogFile="true"/>
     <include file="scripts/004_create_table_pets.sql" relativeToChangelogFile="true"/>
     <include file="scripts/005_insert_pets.sql" relativeToChangelogFile="true"/>
+    <include file="scripts/006_alter_table_pets_pet_type_to_type_pet_id.sql" relativeToChangelogFile="true"/>
 </databaseChangeLog>

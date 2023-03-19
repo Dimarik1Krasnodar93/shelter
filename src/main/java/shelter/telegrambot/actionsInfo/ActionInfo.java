@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import shelter.telegrambot.actions.output.Action;
+import shelter.telegrambot.actions.output.GetterPetInfo;
 import shelter.telegrambot.actions.output.SaverContacts;
 import shelter.telegrambot.actions.inputs.Input;
 
@@ -29,10 +30,16 @@ public class ActionInfo {
     @Autowired
     @Qualifier("callVolunteer")
     private Action callVolunteer;
+    @Autowired
+    @Qualifier("getterPetInfo")
+    private Action getterPetInfo;
 
     @Autowired
     @Qualifier("saverContactsInput")
     private Input saverContactsInput;
+    @Autowired
+    @Qualifier("petInfo")
+    private Input petInfo;
 
     public Action getAction(String text) {
         switch (text) {
@@ -46,6 +53,8 @@ public class ActionInfo {
                 return securityRecommendations;
             case "/SaveContactInfo":
                 return saverContacts;
+            case "/GetPetInfo":
+                return getterPetInfo;
             default:
                 return callVolunteer;
         }
@@ -54,6 +63,9 @@ public class ActionInfo {
     public Input getActionInput(Action lastAction) {
         if (lastAction instanceof SaverContacts) {
             return saverContactsInput;
+        }
+        if (lastAction instanceof GetterPetInfo) {
+            return petInfo;
         }
         return null;
     }

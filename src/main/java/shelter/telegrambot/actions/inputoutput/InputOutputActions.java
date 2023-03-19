@@ -16,7 +16,7 @@ public class InputOutputActions {
             lastAction = action;
         } else {
             Input input = actionInfo.getActionInput(lastAction);
-            input.save(update, messageText);
+            input.execute(update, messageText);
             lastAction = new EmptyAction();
         }
         return lastAction;

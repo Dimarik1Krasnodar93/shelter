@@ -1,0 +1,1 @@
+ALTER TABLE PETS RENAME COLUMN pet_type TO type_pet_id;
